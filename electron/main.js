@@ -10,7 +10,7 @@ function createWindow() {
     width: 1000,
     height: 700,
     webPreferences: {
-      preload: join(__dirname, 'preload.js') // optional
+      preload: join(__dirname, 'preload.js') 
     },
   });
 
