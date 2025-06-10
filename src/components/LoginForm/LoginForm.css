@@ -1,0 +1,144 @@
+/* wrapper ▸ centers or constrains form if you like */
+.form-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ─────────────────────────────────────────────────── */
+/* base form styles                                   */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: #ffffff;
+  padding: 30px;
+  width: 450px;
+  border-radius: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+/* placeholder text */
+::placeholder {
+  font-family: inherit;
+}
+
+/* labels */
+.flex-column > label {
+  color: #575a5a;
+  font-weight: 500;
+}
+
+.flex-column:has(label) {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+label {
+  font-size: 15px;
+}
+
+/* input container */
+.inputForm {
+  border: 1.5px solid #ecedec;
+  border-radius: 10px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  transition: 0.2s ease-in-out;
+}
+
+/* input element */
+.input {
+  margin-left: 10px;
+  border-radius: 10px;
+  border: none;
+  width: 100%;
+  height: 95%;
+  background-color: #fff;
+  color: #000;
+}
+
+.input:focus {
+  outline: none;
+}
+
+/* highlight when focused */
+.inputForm:focus-within {
+  border-color: #2d79f3;
+}
+
+/* flex-helpers */
+.flex-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.flex-row:has(.forgot-password) {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+/* .forgot-password {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+} */
+
+/* small link / span */
+.span {
+  font-size: 14px;
+  margin-left: 5px;
+  color: #2d79f3;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* primary submit button */
+.button-submit {
+  margin: 20px 0 10px 0;
+  background: #151717;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+  border: none;
+  border-radius: 10px;
+  height: 50px;
+  width: 100%;
+  cursor: pointer;
+}
+
+/* paragraph helper text */
+.p {
+  text-align: center;
+  color: #000;
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+/* social buttons */
+.btn {
+  margin-top: 10px;
+  width: 100%;
+  height: 50px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+  gap: 10px;
+  border: 1px solid #ededef;
+  background: #fff;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+.btn:hover {
+  border-color: #2d79f3;
+}
