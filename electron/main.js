@@ -17,6 +17,7 @@ function createWindow() {
 
   win.loadURL("http://localhost:5173");
   win.setMenuBarVisibility(false);
+  win.setMinimumSize(900, 700);
 }
 
 app.whenReady().then(createWindow);

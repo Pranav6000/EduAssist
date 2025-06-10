@@ -15,6 +15,10 @@
     "react-router-dom": "^7.6.2"
   },
   "devDependencies": {
+    "@electron-forge/maker-deb": "^7.8.1",
+    "@electron-forge/maker-rpm": "^7.8.1",
+    "@electron-forge/maker-squirrel": "^7.8.1",
+    "@electron-forge/maker-zip": "^7.8.1",
     "@vitejs/plugin-react": "^4.x.x",
     "concurrently": "^9.1.2",
     "electron": "^36.4.0",

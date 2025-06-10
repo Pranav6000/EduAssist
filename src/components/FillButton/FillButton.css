@@ -1,0 +1,36 @@
+.button {
+  cursor: pointer;
+  position: relative;
+  padding: 10px 24px;
+  font-size: 18px;
+  color: var(--button-color-one, #c1a362); /* fallback value */
+  border: 2px solid var(--button-color-one, #c1a362);
+  border-radius: 10px;
+  background-color: var(--button-color-two);
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  overflow: hidden;
+}
+
+.button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 50px;
+  height: 50px;
+  border-radius: inherit;
+  scale: 0;
+  z-index: -1;
+  background-color: var(--button-color-one, #c1a362);
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.button:hover::before {
+  scale: 10;
+}
+
+.button:hover {
+  color: #212121;
+  box-shadow: 0 0px 20px rgba(193, 163, 98, 0.4); /* optional: also dynamic with `rgba(var(--r), var(--g), var(--b), 0.4)` */
+}

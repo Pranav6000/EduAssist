@@ -1,32 +1,25 @@
-/* wrapper ▸ centers or constrains form if you like */
-.form-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* ─────────────────────────────────────────────────── */
-/* base form styles                                   */
 .form {
+  position: relative;
+  z-index: 1;
+  /* background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  border-radius: 20px; */
+  padding: 30px;
+  width: 450px;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  background: #ffffff;
-  padding: 30px;
-  width: 450px;
-  border-radius: 20px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  color: #e0e0e0;
 }
 
-/* placeholder text */
 ::placeholder {
   font-family: inherit;
+  color: #b0b0b0;
 }
 
-/* labels */
 .flex-column > label {
-  color: #575a5a;
+  color: #c0c0c0;
   font-weight: 500;
 }
 
@@ -40,38 +33,36 @@ label {
   font-size: 15px;
 }
 
-/* input container */
 .inputForm {
-  border: 1.5px solid #ecedec;
-  border-radius: 10px;
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
   height: 50px;
   display: flex;
   align-items: center;
   padding-left: 10px;
   transition: 0.2s ease-in-out;
+  background-color: rgba(255, 255, 255, 0.1);
+  gap: 10px;
 }
 
-/* input element */
 .input {
-  margin-left: 10px;
-  border-radius: 10px;
   border: none;
+  border-radius: 10px;
   width: 100%;
   height: 95%;
-  background-color: #fff;
-  color: #000;
+  font-size: medium;
+  background-color: transparent;
+  color: #ffffff;
 }
 
 .input:focus {
   outline: none;
 }
 
-/* highlight when focused */
 .inputForm:focus-within {
-  border-color: #2d79f3;
+  border-color: #00e0ff;
 }
 
-/* flex-helpers */
 .flex-row {
   display: flex;
   align-items: center;
@@ -85,44 +76,80 @@ label {
   justify-content: flex-end;
 }
 
-/* .forgot-password {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-} */
-
-/* small link / span */
 .span {
   font-size: 14px;
   margin-left: 5px;
-  color: #2d79f3;
+  color: #00e0ff;
   font-weight: 500;
   cursor: pointer;
 }
 
-/* primary submit button */
+.span:hover {
+  color: #5effc0;
+}
+
 .button-submit {
   margin: 20px 0 10px 0;
-  background: #151717;
+  background: linear-gradient(135deg, #00bfff, #0080ff);
+  background-size: 200% 200%; /* make it bigger to move */
+  background-position: left center;
+  box-shadow: 0 8px 20px rgba(0, 128, 255, 0.35);
   color: #fff;
-  font-size: 15px;
-  font-weight: 500;
+  font-size: 16px;
+  font-weight: 600;
   border: none;
-  border-radius: 10px;
-  height: 50px;
+  border-radius: 20px;
+  height: 52px;
   width: 100%;
   cursor: pointer;
+  transition: background-position 0.6s ease, transform 0.2s ease,
+    box-shadow 0.3s ease;
+  letter-spacing: 0.5px;
 }
 
-/* paragraph helper text */
+.button-submit:hover {
+  background-position: right center;
+  box-shadow: 0 10px 25px rgba(0, 128, 255, 0.45);
+}
+
+.button-submit:active {
+  transform: scale(0.97);
+  box-shadow: 0 4px 12px rgba(0, 128, 255, 0.25);
+}
+
 .p {
   text-align: center;
-  color: #000;
+  color: #e0e0e0;
   font-size: 14px;
   margin: 5px 0;
 }
 
-/* social buttons */
+.p {
+  position: relative;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 0 10px;
+  color: #a0a0a0;
+}
+
+.p.line::before,
+.p.line::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 40%;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.p.line::before {
+  left: 0;
+}
+
+.p.line::after {
+  right: 0;
+}
+
 .btn {
   margin-top: 10px;
   width: 100%;
@@ -133,12 +160,28 @@ label {
   align-items: center;
   font-weight: 500;
   gap: 10px;
-  border: 1px solid #ededef;
-  background: #fff;
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  color: #e0e0e0;
   cursor: pointer;
-  transition: 0.2s ease-in-out;
+  transition: border-color 0.2s ease-in-out, transform 0.2s ease;
 }
 
 .btn:hover {
-  border-color: #2d79f3;
+  border-color: #00e0ff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.btn:active {
+  transform: scale(0.95);
+}
+
+svg {
+  fill: #c0c0c0;
+}
+.inputForm:focus-within svg {
+  fill: #00e0ff;
+}
+.btn svg {
+  fill: #e0e0e0;
 }
