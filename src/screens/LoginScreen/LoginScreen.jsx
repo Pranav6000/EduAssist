@@ -16,14 +16,18 @@ function LoginScreen() {
   }, []);
 
   return (
-    <div id="login-container">
-      <LoginForm />
-      <div id="logo-container">
-        <img src={logo} id="logo" />
-        <center>
-          <h1 id="logo-title">EduAssist</h1>
-          <h3 id="app-motto">Your personal assistant</h3>
-        </center>
+    <div id="screen-container">
+      <div id="login-scaler">
+        <div id="login-container">
+          <LoginForm />
+          <div id="logo-container">
+            <img src={logo} id="logo" />
+            <center>
+              <h1 id="logo-title">EduAssist</h1>
+              <h3 id="app-motto">Your personal assistant</h3>
+            </center>
+          </div>
+        </div>
       </div>
     </div>
   );
