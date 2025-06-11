@@ -15,7 +15,7 @@ function createWindow() {
     },
   });
 
-  win.loadURL("http://localhost:5173");
+  win.loadURL("http://localhost:5173/login");
   win.setMenuBarVisibility(false);
   win.setMinimumSize(800, 700);
 }

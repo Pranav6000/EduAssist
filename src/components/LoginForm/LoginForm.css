@@ -1,10 +1,6 @@
 .form {
   position: relative;
   z-index: 1;
-  /* background: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  border-radius: 20px; */
   padding: 30px;
   width: 450px;
   display: flex;
@@ -164,7 +160,7 @@ label {
 
 .btn:hover {
   border-color: #00e0ff;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.25);
 }
 
 .btn:active {

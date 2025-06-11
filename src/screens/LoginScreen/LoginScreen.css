@@ -4,7 +4,7 @@ body {
   margin: 0;
 }
 
-#screen-container {
+#login-screen-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,7 +17,7 @@ body {
 }
 
 #login-container {
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(30px);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 40px;

@@ -3,10 +3,19 @@ import React from "react";
 import GoogleIcon from "../../assets/GoogleIcon.jsx";
 import FillButton from '../FillButton/FillButton.jsx'
 import "./LoginForm.css";
+import { useNavigate } from 'react-router-dom';
 
 
 
 function LoginForm() {
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    navigate("/chats"); 
+  };
+
+
   return (
     <form className="form">
       <center><h1>Login</h1></center>
@@ -61,7 +70,7 @@ function LoginForm() {
       </div>
 
       {/* ─── Sign-in button ───────────────────────────── */}
-      <button type="submit" className="button-submit">
+      <button type="submit" className="button-submit" onClick={handleSubmit}>
         Sign&nbsp;In
       </button>
 
