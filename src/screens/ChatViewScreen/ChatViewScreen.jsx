@@ -1,17 +1,20 @@
+import { useState } from "react";
 import "../../global.css";
 import "./ChatViewScreen.css";
+import "../../components/Sidebar/Sidebar.jsx";
+import Sidebar from "../../components/Sidebar/Sidebar.jsx";
 
 function ChatViewScreen() {
+  const chats = [
+    "Algebra 2",
+    "Biology Advanced",
+    "English",
+    "Computer Science",
+  ];
+
   return (
     <div id="chat-screen-container">
-      <div className="sidebar">
-        <h2 className="sidebar-title">Chats</h2>
-        <ul className="chat-list">
-          <li>Math</li>
-          <li>Science</li>
-          <li>English</li>
-        </ul>
-      </div>
+      <Sidebar />
     </div>
   );
 }

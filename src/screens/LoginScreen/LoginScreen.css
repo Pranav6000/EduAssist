@@ -10,7 +10,7 @@ body {
   align-items: center;
   height: 100vh;
   background: linear-gradient(
-    to bottom,
+    to top,
     var(--color-accent-dark-blue) 50%,
     var(--color-accent-blue) 50%
   );
