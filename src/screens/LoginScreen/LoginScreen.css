@@ -11,14 +11,14 @@ body {
   height: 100vh;
   background: linear-gradient(
     to top,
-    var(--color-accent-dark-blue) 50%,
+    var(--color-accent-grey) 50%,
     var(--color-accent-blue) 50%
   );
 }
 
 #login-container {
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(30px);
+  background: rgba(2 55, 255, 255, 1);
+  backdrop-filter: blur(50px);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 40px;
   display: flex;
@@ -41,13 +41,13 @@ body {
 }
 
 #logo-title {
-  color: white;
+  color: var(--light-bg-color);
   font-size: 50px;
   margin-bottom: -10px;
 }
 
 #app-motto {
-  color: white;
+  color: var(--light-bg-color);
   font-size: 20px;
 }
 
