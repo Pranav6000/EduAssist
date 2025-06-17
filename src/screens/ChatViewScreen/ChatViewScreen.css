@@ -1,0 +1,7 @@
+#chat-screen-container {
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--dark-bg-color);
+  display: flex;
+  flex-direction: row;
+}
