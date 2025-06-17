@@ -6,14 +6,56 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 25vw;
-  /* max-width: 270px; */
-  min-width: 100px;
   height: 100vh;
   background: var(--color-accent-grey, #0d1e3d);
   display: flex;
   flex-direction: column;
   box-shadow: 2px 0 6px rgba(0, 0, 0, 0.25);
+  overflow-x: hidden;
+}
+
+#sidebar.collapsed {
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 70px;
+  overflow-x: hidden;
+}
+
+#sidebar.collapsed .heading-left {
+  margin-right: 0;
+}
+
+#sidebar.collapsed .sidebar-item-label,
+#sidebar.collapsed #heading,
+#sidebar.collapsed .profile-button h3,
+#sidebar.collapsed #heading-logo {
+  display: none;
+}
+
+#sidebar.collapsed .sidebar-item-container {
+  padding-bottom: 1.5rem;
+}
+
+#sidebar.collapsed .sidebar-item {
+  margin: 0;
+  padding-left: 10px;
+  padding-right: 10px;
+  justify-content: center;
+  height: 30px;
+}
+
+#sidebar.collapsed .profile-button {
+  margin-top: 1rem;
+}
+
+#sidebar.collapsed #heading-logo {
+  width: 40px;
+  margin: 0 auto;
+}
+
+#sidebar.collapsed .heading-bar {
+  justify-content: center;
+  padding: 1rem 0;
 }
 
 .sidebar-item-container {
@@ -21,55 +63,53 @@
   flex-direction: column;
   flex-grow: 1;
   justify-content: space-between;
-  min-height: 0; /* this allows inner scrollables to work */
+  min-height: 0;
   overflow: hidden;
 }
 
-.back-button-title-wrapper {
+.heading-bar {
   display: flex;
-  flex-direction: row;
+  align-items: center;
   justify-content: space-between;
-  align-items: baseline;
-  padding-right: 1rem;
+  padding: 1vw 2vw;
+  margin-bottom: 1rem;
 }
 
-.LogoTitle {
+.heading-left {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: baseline;
-  margin-bottom: 1.5rem;
-  border-bottom: solid 2px #131921;
-  padding-bottom: 0.5rem;
-  padding-left: 2vw;
-  padding-right: 2vw;
-  padding-top: 1vw;
+  align-items: center;
+  gap: 0.5rem;
+  margin-right: 2rem;
 }
 
-.LogoTitle > h1 {
+#heading-logo {
+  width: 60px;
+  height: auto;
+  margin: 0;
+}
+
+#heading {
   color: white;
   font-size: 1.25rem;
 }
 
-.LogoTitle > img {
-  width: 60px;
-  height: auto;
-}
-
-/* Grows to fill space between logo and profile */
 .sidebar-grow {
   flex-grow: 1;
   display: flex;
   gap: 20px;
   flex-direction: column;
-  overflow-y: auto;
+  padding-top: 20px;
+  overflow-x: hidden;
+  border-bottom: solid 2px #131921;
+  border-top: solid 2px #131921;
 }
 
-/* Sidebar item */
 .sidebar-item {
   display: flex;
   align-items: center;
   margin-left: 1vw;
+  height: 5vh;
+  min-height: 50px;
   margin-right: 1vw;
   gap: 0.85rem;
   padding: 0.85rem 1rem;
@@ -101,16 +141,10 @@
   background-color: rgba(80, 120, 200, 0.15);
   color: white;
   transform: scale(1.02);
-  box-shadow: inset 4px 0 0 var(--color-accent-blue, #4c8ef7);
 }
 
-/* Profile button stays at bottom */
 .profile-button {
   padding-top: 1rem;
   margin-top: 1rem;
-  margin-bottom: 1.5rem;
-}
-
-.profile-wrapper {
-  border-top: solid 2px #131921;
+  margin-bottom: 2rem;
 }

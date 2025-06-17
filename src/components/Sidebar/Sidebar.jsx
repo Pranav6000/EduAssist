@@ -1,7 +1,7 @@
 import "./Sidebar.css";
 import "../../global.css";
 import logo from "../../assets/logo2.png";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import ChatsIcon from "../../assets/ChatsIcon";
 import SettingsIcon from "../../assets/settingsIcon";
@@ -24,19 +24,27 @@ function Sidebar() {
   ]);
 
   const [selectedItem, setSelectedItem] = useState("Settings");
-  const [expanded, setExpanded] = useState(true);
+  const [expanded, setExpanded] = useState(false);
+
+  const sidebarRef = useRef(null);
 
   const navigate = useNavigate();
 
   return (
-    <motion.div id="sidebar">
-      <div className="back-button-title-wrapper">
-        <div className="LogoTitle">
-          <img src={logo} />
-          <h1>EduAssist</h1>
+    <motion.div
+      id="sidebar"
+      className={expanded ? "expanded" : "collapsed"}
+      animate={{ width: expanded ? "300px" : "60px" }}
+      transition={{ duration: 0.3 }}
+    >
+      <div className="heading-bar">
+        <div className="heading-left">
+          <img src={logo} id="heading-logo" />
+          <h1 id="heading">EduAssist</h1>
         </div>
-        <MenuBackButton />
+        <MenuBackButton scale="0.5" setChecked={setExpanded} />
       </div>
+
       <div className="sidebar-item-container">
         <div className="sidebar-grow">
           {menuItems.map((item) => (
@@ -51,18 +59,20 @@ function Sidebar() {
               }}
             >
               <span className="icon-wrapper">{item.graphic}</span>
-              {expanded && <h3 className="sidebar-item-label">{item.name}</h3>}
+              <h3 className="sidebar-item-label">{item.name}</h3>
             </div>
           ))}
         </div>
 
-        <div className="profile-wrapper">
-          <div className="profile-button sidebar-item">
-            <span className="icon-wrapper">
-              <ProfileIcon width="30" height="30" />
-            </span>
-            {expanded && <h3 className="sidebar-item-label">Profile</h3>}
-          </div>
+        <div
+          className="profile-button sidebar-item"
+          onClick={() => navigate("/profile")}
+          style={{ cursor: "pointer" }} // optional, but good UX to show clickable
+        >
+          <span className="icon-wrapper">
+            <ProfileIcon width="30" height="30" />
+          </span>
+          <h3 className="sidebar-item-label">Profile</h3>
         </div>
       </div>
     </motion.div>

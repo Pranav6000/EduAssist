@@ -1,15 +1,21 @@
 import "./MenuBackButton.css";
 import "../../global.css";
+import { useState } from "react";
 
-export default function MenuBackButton() {
+export default function MenuBackButton({ scale = 1, isChecked, setChecked }) {
   return (
-    <>
-      <input id="checkbox" type="checkbox" />
-      <label class="toggle" for="checkbox">
-        <div id="bar1" class="bars"></div>
-        <div id="bar2" class="bars"></div>
-        <div id="bar3" class="bars"></div>
+    <div style={{ transform: `scale(${scale})` }}>
+      <input
+        id="checkbox"
+        type="checkbox"
+        checked={isChecked}
+        onChange={(e) => setChecked(e.target.checked)}
+      />
+      <label className="toggle" htmlFor="checkbox">
+        <div id="bar1" className="bars"></div>
+        <div id="bar2" className="bars"></div>
+        <div id="bar3" className="bars"></div>
       </label>
-    </>
+    </div>
   );
 }
