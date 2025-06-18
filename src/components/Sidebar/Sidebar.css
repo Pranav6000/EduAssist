@@ -266,7 +266,7 @@
   }
 }
 
-@media (max-width: 1300px) {
+@media (max-width: 1500px) {
   .sidebar-item {
     transform: scale(0.8);
   }

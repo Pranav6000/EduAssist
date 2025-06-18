@@ -28,7 +28,8 @@ function Sidebar() {
 
   const sidebarRef = useRef(null);
 
-  // Update `isScreenWide` on resize
+  const expandedWidth = Math.min(window.innerWidth * 0.15, 300);
+
   useEffect(() => {
     const handleResize = () => {
       setScreenWide(window.innerWidth < 1000);
@@ -38,7 +39,6 @@ function Sidebar() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Always collapsed on small screens
   const isCollapsed = isScreenWide || !expanded;
 
   const handleNavigation = (path, name) => {
@@ -50,7 +50,7 @@ function Sidebar() {
     <motion.div
       id="sidebar"
       className={isCollapsed ? "collapsed" : "expanded"}
-      animate={{ width: isCollapsed ? "80px" : "15vw" }}
+      animate={{ width: isCollapsed ? "80px" : expandedWidth }}
       transition={{ duration: 0.3 }}
       ref={sidebarRef}
     >
