@@ -27,8 +27,7 @@
 
 #sidebar.collapsed .sidebar-item-label,
 #sidebar.collapsed #heading,
-#sidebar.collapsed .profile-button h3,
-#sidebar.collapsed #heading-logo {
+#sidebar.collapsed .profile-button h3 {
   display: none;
 }
 
@@ -129,9 +128,9 @@
   transform: translateY(-50%);
   background: linear-gradient(
     135deg,
-    var(--color-accent-blue) 0%,
-    var(--color-accent-light-blue) 100%
-  );
+    #2a2f40,
+    #1e2230
+  ); /* nice dark grey gradient */
   color: white;
   padding: 10px 16px;
   border-radius: 8px;
@@ -206,7 +205,15 @@
 }
 
 .sidebar-item.selected-item .tooltip {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+  background: linear-gradient(
+    135deg,
+    var(--color-accent-blue) 0%,
+    var(--color-accent-light-blue) 100%
+  );
+}
+
+.tooltip::before {
+  border-color: transparent #2a2f40 transparent transparent;
 }
 
 .sidebar-item.selected-item .tooltip::before {
@@ -290,11 +297,5 @@
   .tooltip {
     font-size: 12px;
     padding: 6px 12px;
-  }
-}
-
-@media (max-width: 1000px) {
-  #sidebar.collapsed #heading-logo {
-    display: block;
   }
 }
