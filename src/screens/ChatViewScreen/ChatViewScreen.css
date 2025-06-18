@@ -5,3 +5,9 @@
   display: flex;
   flex-direction: row;
 }
+
+#chat-picker {
+  background: var(--color-accent-grey);
+  height: 100vh;
+  width: 200px;
+}

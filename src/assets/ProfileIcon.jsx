@@ -9,7 +9,6 @@ export default function ProfileIcon({ width = 24, height = 24 }) {
       aria-label="Profile icon"
       role="img"
     >
-      <title>Profile Icon</title>
       {/* Head */}
       <circle cx="12" cy="8" r="4" fill="#FFF" />
       {/* Shoulders */}

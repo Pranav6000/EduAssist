@@ -7,7 +7,6 @@ function ChatsIcon({ width = 24, height = 24 }) {
       preserveAspectRatio="xMidYMid meet"
       fill="none"
     >
-      <title>chat-filled-refreshed</title>
       <path
         fillRule="evenodd"
         clipRule="evenodd"

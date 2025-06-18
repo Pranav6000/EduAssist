@@ -3,7 +3,7 @@
 }
 
 #sidebar {
-  position: fixed;
+  position: relative;
   top: 0;
   left: 0;
   height: 100vh;
@@ -11,14 +11,14 @@
   display: flex;
   flex-direction: column;
   box-shadow: 2px 0 6px rgba(0, 0, 0, 0.25);
-  overflow-x: hidden;
+  overflow-x: visible; /* Changed from hidden to visible for tooltips */
 }
 
 #sidebar.collapsed {
   padding-left: 10px;
   padding-right: 10px;
   width: 70px;
-  overflow-x: hidden;
+  overflow-x: visible; /* Changed from hidden to visible for tooltips */
 }
 
 #sidebar.collapsed .heading-left {
@@ -27,8 +27,7 @@
 
 #sidebar.collapsed .sidebar-item-label,
 #sidebar.collapsed #heading,
-#sidebar.collapsed .profile-button h3,
-#sidebar.collapsed #heading-logo {
+#sidebar.collapsed .profile-button h3 {
   display: none;
 }
 
@@ -64,7 +63,7 @@
   flex-grow: 1;
   justify-content: space-between;
   min-height: 0;
-  overflow: hidden;
+  overflow: visible; /* Changed for tooltips */
 }
 
 .heading-bar {
@@ -99,12 +98,14 @@
   gap: 20px;
   flex-direction: column;
   padding-top: 20px;
-  overflow-x: hidden;
+  overflow-x: visible; /* Changed for tooltips */
   border-bottom: solid 2px #131921;
   border-top: solid 2px #131921;
 }
 
+/* Sidebar item styling */
 .sidebar-item {
+  position: relative; /* Important for tooltip positioning */
   display: flex;
   align-items: center;
   margin-left: 1vw;
@@ -119,10 +120,71 @@
   transition: all 0.2s ease;
 }
 
+/* Tooltip base styling - hidden by default */
+.tooltip {
+  position: absolute;
+  top: 50%;
+  left: calc(100% + 15px);
+  transform: translateY(-50%);
+  background: linear-gradient(
+    135deg,
+    var(--color-accent-blue) 0%,
+    var(--color-accent-light-blue) 100%
+  );
+  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3), 0 4px 10px rgba(1, 111, 185, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  pointer-events: none;
+}
+
+/* Tooltip arrow */
+.tooltip::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -6px;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 6px 6px 6px 0;
+  border-color: transparent var(--color-accent-blue) transparent transparent;
+}
+
+/* Show tooltip ONLY when sidebar is collapsed AND item is hovered */
+#sidebar.collapsed .sidebar-item:hover .tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-50%) translateX(5px);
+}
+
+/* Hide tooltips when sidebar is expanded */
+#sidebar:not(.collapsed) .tooltip {
+  display: none !important;
+}
+
+/* Enhanced hover effects */
 .sidebar-item:hover {
   background-color: rgba(255, 255, 255, 0.06);
   transform: scale(1.01);
   box-shadow: 0px 0px 20px 2px rgba(80, 120, 200, 0.15);
+}
+
+/* Enhanced hover effects for collapsed sidebar */
+#sidebar.collapsed .sidebar-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: scale(1.05);
+  box-shadow: 0px 0px 25px 3px rgba(80, 120, 200, 0.2);
 }
 
 .sidebar-item:active {
@@ -130,7 +192,7 @@
 }
 
 .sidebar-item-label {
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 500;
   color: inherit;
   white-space: nowrap;
@@ -138,13 +200,94 @@
 }
 
 .sidebar-item.selected-item {
-  background-color: rgba(80, 120, 200, 0.15);
+  background: var(--color-accent-blue);
   color: white;
-  transform: scale(1.02);
+}
+
+.sidebar-item.selected-item .tooltip {
+  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+}
+
+.sidebar-item.selected-item .tooltip::before {
+  border-color: transparent #1a365d transparent transparent;
 }
 
 .profile-button {
   padding-top: 1rem;
   margin-top: 1rem;
   margin-bottom: 2rem;
+}
+
+/* Icon wrapper for better tooltip positioning */
+.icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+@media (max-width: 1700px) {
+  .sidebar-item {
+    transform: scale(0.85);
+  }
+
+  .sidebar-item:hover {
+    transform: scale(1);
+  }
+
+  #sidebar.collapsed .sidebar-item:hover {
+    transform: scale(1.05);
+  }
+
+  #heading {
+    font-size: 1.05rem;
+  }
+
+  #heading-logo {
+    width: 40px;
+  }
+
+  .heading-left {
+    margin-right: 15px;
+  }
+
+  .tooltip {
+    font-size: 13px;
+    padding: 8px 14px;
+  }
+}
+
+@media (max-width: 1300px) {
+  .sidebar-item {
+    transform: scale(0.8);
+  }
+
+  .sidebar-item:hover {
+    transform: scale(0.9);
+  }
+
+  #sidebar.collapsed .sidebar-item:hover {
+    transform: scale(1);
+  }
+
+  #heading {
+    font-size: 1rem;
+  }
+
+  .sidebar-item-label {
+    font-size: 0.95rem;
+  }
+
+  #heading-logo {
+    width: 50px;
+  }
+
+  #heading {
+    display: none;
+  }
+
+  .tooltip {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
 }

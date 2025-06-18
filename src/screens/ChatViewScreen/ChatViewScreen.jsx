@@ -15,6 +15,7 @@ function ChatViewScreen() {
   return (
     <div id="chat-screen-container">
       <Sidebar />
+      <div id="chat-picker"></div>
     </div>
   );
 }

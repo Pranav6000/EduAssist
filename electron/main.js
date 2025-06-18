@@ -16,7 +16,7 @@ ipcMain.handle("store-set", (event, key, value) => {
 
 function createWindow() {
   const win = new BrowserWindow({
-    width: 1000,
+    width: 1500,
     height: 700,
     icon: "../public/logo.png",
     webPreferences: {
@@ -26,7 +26,7 @@ function createWindow() {
 
   win.loadURL("http://localhost:5173/login");
   win.setMenuBarVisibility(false);
-  win.setMinimumSize(800, 700);
+  win.setMinimumSize(700, 700);
 }
 
 app.whenReady().then(createWindow);

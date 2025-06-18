@@ -2,7 +2,6 @@ import "./Sidebar.css";
 import "../../global.css";
 import logo from "../../assets/logo2.png";
 import { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
 import ChatsIcon from "../../assets/ChatsIcon";
 import SettingsIcon from "../../assets/settingsIcon";
 import ProfileIcon from "../../assets/ProfileIcon";
@@ -25,24 +24,44 @@ function Sidebar() {
 
   const [selectedItem, setSelectedItem] = useState("Settings");
   const [expanded, setExpanded] = useState(false);
+  const [isScreenWide, setScreenWide] = useState(window.innerWidth < 1000);
 
   const sidebarRef = useRef(null);
 
-  const navigate = useNavigate();
+  // Update `isScreenWide` on resize
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenWide(window.innerWidth < 1000);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // Always collapsed on small screens
+  const isCollapsed = isScreenWide || !expanded;
+
+  const handleNavigation = (path, name) => {
+    console.log(`Navigating to ${path}`);
+    setSelectedItem(name);
+  };
 
   return (
     <motion.div
       id="sidebar"
-      className={expanded ? "expanded" : "collapsed"}
-      animate={{ width: expanded ? "300px" : "60px" }}
+      className={isCollapsed ? "collapsed" : "expanded"}
+      animate={{ width: isCollapsed ? "80px" : "15vw" }}
       transition={{ duration: 0.3 }}
+      ref={sidebarRef}
     >
       <div className="heading-bar">
         <div className="heading-left">
-          <img src={logo} id="heading-logo" />
-          <h1 id="heading">EduAssist</h1>
+          <img src={logo} id="heading-logo" alt="Logo" />
+          {!isScreenWide && <h1 id="heading">EduAssist</h1>}
         </div>
-        <MenuBackButton scale="0.5" setChecked={setExpanded} />
+        {!isScreenWide && (
+          <MenuBackButton scale="0.5" setChecked={setExpanded} />
+        )}
       </div>
 
       <div className="sidebar-item-container">
@@ -53,12 +72,10 @@ function Sidebar() {
                 selectedItem === item.name ? "selected-item" : ""
               }`}
               key={item.path}
-              onClick={() => {
-                navigate(item.path);
-                setSelectedItem(item.name);
-              }}
+              onClick={() => handleNavigation(item.path, item.name)}
             >
               <span className="icon-wrapper">{item.graphic}</span>
+              <span className="tooltip">{item.name}</span>
               <h3 className="sidebar-item-label">{item.name}</h3>
             </div>
           ))}
@@ -66,12 +83,13 @@ function Sidebar() {
 
         <div
           className="profile-button sidebar-item"
-          onClick={() => navigate("/profile")}
-          style={{ cursor: "pointer" }} // optional, but good UX to show clickable
+          onClick={() => handleNavigation("/profile", "Profile")}
+          style={{ cursor: "pointer" }}
         >
           <span className="icon-wrapper">
             <ProfileIcon width="30" height="30" />
           </span>
+          <span className="tooltip">Profile</span>
           <h3 className="sidebar-item-label">Profile</h3>
         </div>
       </div>
